@@ -27,6 +27,7 @@ Temat ³±cz±cy wygl±d NextStepa, Amigi oraz Windows 95.
 
 %build
 %{__make} \
+	CC="%{__cc}" \
 	LIB_PATH="%{_libdir}/gtk/themes/engines" \
 	DATA_PATH="%{_datadir}/themes"
 
