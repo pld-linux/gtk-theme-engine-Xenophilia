@@ -2,7 +2,7 @@ Summary:	NextStep+Amiga+Win95 Theme
 Summary(pl):	Motyw ³±cz±cy wygl±d NextStep+Amiga+Win95
 Name:		gtk-theme-engine-Xenophilia
 Version:	0.8
-Release:	2
+Release:	1
 License:	LGPL
 Group:		Themes/Gtk
 Source0:	http://download.freshmeat.net/themes/xenophilia/xenophilia-%{version}.tar.gz
@@ -12,6 +12,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
 
 %description
 Theme Engine with a plain look which is somewhere in between NextStep,
