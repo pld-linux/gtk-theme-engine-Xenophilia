@@ -10,8 +10,6 @@ URL:		http://gtk.classic.themes.org/php/download.phtml?object=gtk.theme.93525251
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		/usr/X11R6/man
 
 %description
 Theme Engine with a plain look which is somewhere in between NextStep,
