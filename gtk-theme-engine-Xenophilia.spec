@@ -38,12 +38,11 @@ install -d $RPM_BUILD_ROOT%{_datadir}/themes
 	LIB_PATH=$RPM_BUILD_ROOT%{_libdir}/gtk/themes/engines \
 	DATA_PATH=$RPM_BUILD_ROOT%{_datadir}/themes
 
-gzip -9nf AUTHORS BUGS CONFIGURATION ChangeLog README TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS BUGS CONFIGURATION ChangeLog README TODO
 %attr(755,root,root) %{_libdir}/gtk/themes/engines/*
 %{_datadir}/themes/*
