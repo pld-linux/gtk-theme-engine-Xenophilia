@@ -1,0 +1,124 @@
+--- Xenophilia-0.8/fonts/Makefile.in~	Wed May 14 08:26:13 2003
++++ Xenophilia-0.8/fonts/Makefile.in	Wed May 14 08:26:13 2003
+@@ -1,10 +1,9 @@
+ all:
+ 
+ install:
+-		cp -fdp infernal-120.pcf.gz @X_FONT_DIR@/infernal-120.pcf.gz
+-		cp -fdp infernal-bold-120.pcf.gz @X_FONT_DIR@/infernal-bold-120.pcf.gz
+-		mkfontdir @X_FONT_DIR@
+-		xset fp rehash
++		install -d $(DESTDIR)@X_FONT_DIR@
++		cp -fdp infernal-120.pcf.gz $(DESTDIR)@X_FONT_DIR@/infernal-120.pcf.gz
++		cp -fdp infernal-bold-120.pcf.gz $(DESTDIR)@X_FONT_DIR@/infernal-bold-120.pcf.gz
+ 
+ uninstall:
+ 
+--- Xenophilia-0.8/gtk-src/Makefile.in~	Wed May 14 08:29:56 2003
++++ Xenophilia-0.8/gtk-src/Makefile.in	Wed May 14 08:29:56 2003
+@@ -6,26 +6,21 @@
+ objects		= xeno_theme.o xeno_rc_style.o xeno_style.o xeno_style_draw.o \
+ 		  xeno_style_fill.o xeno_style_images.o xeno_color.o xeno_patches.o
+ 
+-SONAME		= libxeno.so.@VERSION@
+-SHORTNAME	= libxeno.so.@MAJOR@
+-TINYNAME	= libxeno.so
++SONAME		= libxeno.so
+ 
+ #-- Targets ----------------------------------------
+ $(SONAME):	$(objects)
+-		@CC@ @LDFLAGS@ @LIBS@ @GTK_LIBS@ $(objects) -shared -Wl,-soname,$(SHORTNAME) -o $(SONAME)
++		@CC@ @LDFLAGS@ @LIBS@ @GTK_LIBS@ $(objects) -shared -o libxeno.so
+ 
+ %.o:		%.c
+ 		@CC@ @CFLAGS@ @GTK_CFLAGS@ -c $< -o $@
+ 
+ install:	$(SONAME)
+-		install -d $(ENGINE_DIR)
+-		chmod 755 $(SONAME)
+-		cp -fdp $(SONAME) $(ENGINE_DIR)
+-		ln -fs $(SONAME) $(ENGINE_DIR)/$(SHORTNAME)
+-		ln -fs $(SONAME) $(ENGINE_DIR)/$(TINYNAME)
++		install -d $(DESTDIR)$(ENGINE_DIR)
++		install $(SONAME) $(DESTDIR)$(ENGINE_DIR)
+ 
+ uninstall:
+-		rm -f $(ENGINE_DIR)/$(TINYNAME)*
++		rm -f $(DESTDIR)$(ENGINE_DIR)/$(SONAME)
+ 
+ strip:		$(SONAME)
+ 		strip $(SONAME)
+--- Xenophilia-0.8/Makefile.in~	Wed May 14 08:40:10 2003
++++ Xenophilia-0.8/Makefile.in	Wed May 14 08:40:10 2003
+@@ -6,7 +6,7 @@
+ 		@for subdir in "${SUBDIRS}" ; do make -C $${subdir} ; done
+ 
+ install:
+-		@for subdir in "${SUBDIRS}" ; do make -C $${subdir} install ; done
++		@for subdir in "${SUBDIRS}" ; do make -C $${subdir} DESTDIR=${DESTDIR} install ; done
+ 
+ uninstall:
+ 		@for subdir in "${SUBDIRS}" ; do make -C $${subdir} uninstall ; done
+--- Xenophilia-0.8/themes/Makefile.in~	Fri May  3 20:24:13 2002
++++ Xenophilia-0.8/themes/Makefile.in	Wed May 14 08:50:51 2003
+@@ -32,12 +32,12 @@
+ 		rm -f Makefile
+ 
+ install-dir:
+-		${INSTALL_DIR} ${THEME_DIR}
++		${INSTALL_DIR} ${DESTDIR}${THEME_DIR}
+ 
+ #-- main theme --
+ 
+ install:	install-dir
+-		${INSTALL_ALL} ${MAIN_THEME} ${THEME_DIR}
++		${INSTALL_ALL} ${MAIN_THEME} ${DESTDIR}${THEME_DIR}
+ 
+ uninstall:
+ 		${RM_ALL} "$(THEME_DIR)/Xenophilia"
+@@ -48,7 +48,7 @@
+ install-all:	install-dir
+ 		@for theme in ${THEMES} ; do \
+ 		  echo "Installing $$theme" ; \
+-		  ${INSTALL_ALL} "$$theme" "${THEME_DIR}" ; \
++		  ${INSTALL_ALL} "$$theme" "${DESTDIR}${THEME_DIR}" ; \
+ 		done
+ 
+ install-themes:	install-all
+@@ -63,31 +63,31 @@
+ #-- individual themes --
+ 
+ install-thin:	install-dir
+-		${INSTALL_ALL} "Xeno Thin" ${THEME_DIR}
++		${INSTALL_ALL} "Xeno Thin" ${DESTDIR}${THEME_DIR}
+ 
+ uninstall-thin:
+ 		${RM_ALL} "${THEME_DIR}/Xeno Thin"
+ 
+ install-gradient: install-dir
+-		${INSTALL_ALL} "Xeno Gradient" ${THEME_DIR}
++		${INSTALL_ALL} "Xeno Gradient"${DESTDIR}${THEME_DIR}
+ 
+ uninstall-gradient:
+ 		${RM_ALL} "${THEME_DIR}/Xeno Gradient"
+ 
+ install-helix:	install-dir
+-		${INSTALL_ALL} "Xeno Helix" ${THEME_DIR}
++		${INSTALL_ALL} "Xeno Helix"${DESTDIR}${THEME_DIR}
+ 
+ uninstall-helix:
+ 		${RM_ALL} "${THEME_DIR}/Xeno Helix"
+ 
+ install-buffed:	install-dir
+-		${INSTALL_ALL} "Xeno Buffed" ${THEME_DIR}
++		${INSTALL_ALL} "Xeno Buffed"${DESTDIR}${THEME_DIR}
+ 
+ uninstall-buffed:
+ 		${RM_ALL} "${THEME_DIR}/Xeno Buffed"
+ 
+ install-perkele: install-dir
+-		${INSTALL_ALL} "Xeno Perkele" ${THEME_DIR}
++		${INSTALL_ALL} "Xeno Perkele"${DESTDIR}${THEME_DIR}
+ 
+ uninstall-perkele:
+ 		${RM_ALL} "${THEME_DIR}/Xeno Perkele"
