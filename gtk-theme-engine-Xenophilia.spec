@@ -5,8 +5,6 @@ Version:	0.7
 Release:	1
 License:	LGPL
 Group:		Themes/Gtk
-Group(de):	Themen/Gtk
-Group(pl):	Motywy/Gtk
 Source0:	Xenophilia-1.2.x.tar.gz
 URL:		http://gtk.classic.themes.org/php/download.phtml?object=gtk.theme.935252517&rev=1.2.x	
 BuildRequires:	gtk+-devel
