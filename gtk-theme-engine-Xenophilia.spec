@@ -1,5 +1,5 @@
 Summary:	NextStep+Amiga+Win95 Theme
-Summary(pl):	Temat ³±cz±cy wygl±d NextStep+Amiga+Win95
+Summary(pl):	Motyw ³±cz±cy wygl±d NextStep+Amiga+Win95
 Name:		gtk-theme-engine-Xenophilia
 Version:	0.7
 Release:	1
@@ -16,7 +16,7 @@ Theme Engine with a plain look which is somewhere in between NextStep,
 Amiga and Windows 95.
 
 %description -l pl
-Temat ³±cz±cy wygl±d NextStepa, Amigi oraz Windows 95.
+Motyw ³±cz±cy wygl±d NextStepa, Amigi oraz Windows 95.
 
 %prep
 %setup  -q -n Xenophilia-%{version}
