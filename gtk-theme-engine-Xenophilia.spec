@@ -6,6 +6,7 @@ Release:	2
 License:	LGPL
 Group:		Themes/Gtk
 Source0:	http://download.freshmeat.net/themes/xenophilia/xenophilia-%{version}.tar.gz
+# Source0-md5:	620127ce8e668588de2373783254a3e8
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://gtk.classic.themes.org/php/download.phtml?object=gtk.theme.935252517&rev=1.2.x
 BuildRequires:	autoconf
