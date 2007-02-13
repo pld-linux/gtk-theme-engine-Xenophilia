@@ -1,5 +1,5 @@
 Summary:	NextStep+Amiga+Win95 Theme
-Summary(pl.UTF-8):   Motyw łączący wygląd NextStep+Amiga+Win95
+Summary(pl.UTF-8):	Motyw łączący wygląd NextStep+Amiga+Win95
 Name:		gtk-theme-engine-Xenophilia
 Version:	0.8
 Release:	3
