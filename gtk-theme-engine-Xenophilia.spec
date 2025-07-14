@@ -23,7 +23,7 @@ Motyw łączący wygląd NextStepa, Amigi oraz Windows 95.
 
 %prep
 %setup  -q -n Xenophilia-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 rm -f missing
